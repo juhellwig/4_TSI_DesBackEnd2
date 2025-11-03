@@ -5,6 +5,8 @@ select * from monitoramento_diabetes
 select * from monitoramento_hipertensao
 select * from exames
 
+--USUARIOS
+
 INSERT INTO usuarios 
 (nomeusuario, dtnasc, sexo, cpf, telefone, email, email_verified_at, tipo_usuario, password, remember_token, datacadastro, imagem)
 VALUES
@@ -28,3 +30,29 @@ VALUES
 ('Felipe Teixeira', '1989-09-09', 'M', '78965412300', '(91) 98333-2211', 'felipe.teixeira@example.com', NULL, 'profissional', 'senha123', NULL, '2025-02-07 18:15:00', 'felipe.jpg'),
 ('Tatiane Barbosa', '1995-01-16', 'F', '85296374100', '(11) 98111-7788', 'tatiane.barbosa@example.com', NULL, 'paciente', 'senha123', NULL, '2025-02-08 09:55:00', 'tatiane.jpg'),
 ('Rodrigo Azevedo', '1986-08-12', 'M', '95185275300', '(21) 98888-3344', 'rodrigo.azevedo@example.com', NULL, 'administrador', 'senha123', NULL, '2025-02-10 16:40:00', 'rodrigo.png');
+
+-- MONITORAMENTOS
+
+INSERT INTO monitoramentos (dt_monitoramento, hora_monitoramento, tipo, observacoes, created_at, updated_at)
+VALUES
+('2025-11-01', '08:15:00', 'Diabetes', 'Glicemia em jejum dentro do normal.', NOW(), NOW()),
+('2025-11-01', '09:30:00', 'Hipertensao', 'Pressão um pouco elevada pela manhã.', NOW(), NOW()),
+('2025-11-02', '07:45:00', 'Diabetes', 'Glicemia pós-café da manhã controlada.', NOW(), NOW()),
+('2025-11-02', '14:00:00', 'Hipertensao', 'Pressão arterial dentro do esperado.', NOW(), NOW()),
+('2025-11-03', '10:30:00', 'Outra', 'Consulta de rotina sem alterações.', NOW(), NOW()),
+('2025-11-03', '16:15:00', 'Hipertensao', 'Pressão ligeiramente alta após atividade física.', NOW(), NOW()),
+('2025-11-04', '08:00:00', 'Diabetes', 'Glicemia em jejum um pouco acima do limite.', NOW(), NOW()),
+('2025-11-04', '11:45:00', 'Outra', 'Relato de cansaço leve, sem alterações significativas.', NOW(), NOW());
+
+-- ENDERECOS
+
+INSERT INTO enderecos (cep, logradouro, numero, complemento, bairro, cidade, estado, pais, created_at, updated_at)
+VALUES
+('01001000', 'Praça da Sé', 100, 'Apto 101', 'Sé', 'São Paulo', 'SP', 'Brasil', NOW(), NOW()),
+('20040002', 'Rua Uruguaiana', 250, 'Loja 12', 'Centro', 'Rio de Janeiro', 'RJ', 'Brasil', NOW(), NOW()),
+('30140071', 'Avenida Afonso Pena', 500, 'Sala 202', 'Centro', 'Belo Horizonte', 'MG', 'Brasil', NOW(), NOW()),
+('40020020', 'Rua Chile', 120, '', 'Centro', 'Salvador', 'BA', 'Brasil', NOW(), NOW()),
+('70040900', 'Esplanada dos Ministérios', 50, 'Bloco C', 'Zona Cívico-Administrativa', 'Brasília', 'DF', 'Brasil', NOW(), NOW()),
+('60025190', 'Rua Dr. José Lourenço', 80, '', 'Praia de Iracema', 'Fortaleza', 'CE', 'Brasil', NOW(), NOW()),
+('80020030', 'Rua XV de Novembro', 300, 'Apto 305', 'Centro', 'Curitiba', 'PR', 'Brasil', NOW(), NOW()),
+('89010000', 'Rua XV de Novembro', 150, 'Casa', 'Centro', 'Blumenau', 'SC', 'Brasil', NOW(), NOW());

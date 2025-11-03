@@ -16,7 +16,7 @@ return new class extends Migration
             $table->char('cep', length: 8);
             $table->string('logradouro', length: 100);
             $table->integer('numero');
-            $table->string('complemento', length: 50);
+            $table->string('complemento', length: 50)->nullable();
             $table->string('bairro', length: 50);
             $table->string('cidade', length: 50);
             $table->char('estado', length: 2);
