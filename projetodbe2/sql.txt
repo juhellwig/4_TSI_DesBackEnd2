@@ -56,3 +56,4 @@ VALUES
 ('60025190', 'Rua Dr. José Lourenço', 80, '', 'Praia de Iracema', 'Fortaleza', 'CE', 'Brasil', NOW(), NOW()),
 ('80020030', 'Rua XV de Novembro', 300, 'Apto 305', 'Centro', 'Curitiba', 'PR', 'Brasil', NOW(), NOW()),
 ('89010000', 'Rua XV de Novembro', 150, 'Casa', 'Centro', 'Blumenau', 'SC', 'Brasil', NOW(), NOW());
+
