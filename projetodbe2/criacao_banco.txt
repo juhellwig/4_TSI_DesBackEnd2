@@ -1,0 +1,39 @@
+CREATE DATABASE applaravel;
+
+CREATE TABLE usuario (
+    codusuario INT AUTO_INCREMENT PRIMARY KEY, 
+    nomeusuario VARCHAR(50), 
+    dtnasc DATE,
+    sexo CHAR(1),
+    cpf CHAR(11),
+    telefone VARCHAR(15),
+    email VARCHAR(100),
+    tipo_usuario ENUM('Paciente', 'Profissional', 'Administrador') DEFAULT 'Paciente',
+    senha VARCHAR(255),
+    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    imagem varchar(255) DEFAULT 'foto.png'
+);
+                     
+CREATE TABLE endereco (
+    codendereco INT AUTO_INCREMENT PRIMARY KEY, 
+    //codpessoa INT, 
+    cep CHAR(8),
+    logradouro VARCHAR(100), 
+    numero INT,
+    complemento VARCHAR(50),
+    bairro VARCHAR(50), 
+    cidade VARCHAR(50), 
+    estado CHAR(2), 
+    pais VARCHAR(30),
+    //FOREIGN KEY (codpessoa) REFERENCES pessoa(codpessoa)
+);
+
+CREATE TABLE monitoramento (
+    id_monitoramento INT AUTO_INCREMENT PRIMARY KEY,
+    //codpessoa INT NOT NULL,
+    data_monitoramento DATE,
+    hora_monitoramento TIME,
+    tipo ENUM('Diabetes', 'Hipertensao', 'Outra'),
+    observacoes TEXT,
+    //FOREIGN KEY (codpessoa) REFERENCES pessoa(codpessoa)
+);

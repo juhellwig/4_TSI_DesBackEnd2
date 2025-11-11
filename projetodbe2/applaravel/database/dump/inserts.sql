@@ -1,0 +1,59 @@
+select * from usuarios
+select * from enderecos
+select * from monitoramentos
+select * from monitoramento_diabetes
+select * from monitoramento_hipertensao
+select * from exames
+
+--USUARIOS
+
+INSERT INTO usuarios 
+(nomeusuario, dtnasc, sexo, cpf, telefone, email, email_verified_at, tipo_usuario, password, remember_token, datacadastro, imagem)
+VALUES
+('Ana Souza', '1990-03-12', 'F', '12345678901', '(11) 98765-4321', 'ana.souza@example.com', NULL, 'paciente', 'senha123', NULL, '2025-01-10 10:00:00', 'ana.jpg'),
+('João Pereira', '1985-07-22', 'M', '98765432100', '(21) 98888-1234', 'joao.pereira@example.com', NULL, 'profissional', 'senha123', NULL, '2025-01-12 14:30:00', 'joao.jpg'),
+('Mariana Oliveira', '1992-11-05', 'F', '45678912309', '(31) 99999-1111', 'mariana.oliveira@example.com', NULL, 'paciente', 'senha123', NULL, '2025-01-15 09:45:00', 'mariana.png'),
+('Carlos Silva', '1988-06-17', 'M', '78912345600', '(41) 98456-7890', 'carlos.silva@example.com', NULL, 'administrador', 'senha123', NULL, '2025-01-16 16:00:00', 'carlos.jpg'),
+('Fernanda Lima', '1995-02-10', 'F', '32165498710', '(51) 98877-6655', 'fernanda.lima@example.com', NULL, 'paciente', 'senha123', NULL, '2025-01-18 11:10:00', 'fernanda.jpg'),
+('Lucas Rocha', '1993-04-25', 'M', '65498732100', '(61) 98712-3344', 'lucas.rocha@example.com', NULL, 'profissional', 'senha123', NULL, '2025-01-20 18:20:00', 'lucas.jpg'),
+('Patrícia Gomes', '1997-09-14', 'F', '14725836900', '(71) 98523-7788', 'patricia.gomes@example.com', NULL, 'paciente', 'senha123', NULL, '2025-01-21 08:50:00', 'patricia.jpg'),
+('Bruno Costa', '1989-01-03', 'M', '25836914700', '(81) 98345-6677', 'bruno.costa@example.com', NULL, 'profissional', 'senha123', NULL, '2025-01-23 13:40:00', 'bruno.png'),
+('Camila Ribeiro', '1996-05-09', 'F', '36914725800', '(91) 98123-9988', 'camila.ribeiro@example.com', NULL, 'paciente', 'senha123', NULL, '2025-01-25 17:55:00', 'camila.jpg'),
+('Rafael Fernandes', '1991-08-27', 'M', '95135745600', '(11) 98777-5544', 'rafael.fernandes@example.com', NULL, 'profissional', 'senha123', NULL, '2025-01-26 19:05:00', 'rafael.jpg'),
+('Larissa Martins', '1998-02-19', 'F', '75395185200', '(21) 98666-1122', 'larissa.martins@example.com', NULL, 'paciente', 'senha123', NULL, '2025-01-28 09:20:00', 'larissa.png'),
+('Diego Santos', '1984-10-07', 'M', '85274196300', '(31) 98234-5566', 'diego.santos@example.com', NULL, 'profissional', 'senha123', NULL, '2025-01-30 10:10:00', 'diego.jpg'),
+('Juliana Almeida', '1990-05-13', 'F', '95145612300', '(41) 98987-2233', 'juliana.almeida@example.com', NULL, 'paciente', 'senha123', NULL, '2025-02-01 08:00:00', 'juliana.jpg'),
+('André Cardoso', '1987-11-23', 'M', '45612378900', '(51) 98734-4455', 'andre.cardoso@example.com', NULL, 'administrador', 'senha123', NULL, '2025-02-03 12:00:00', 'andre.jpg'),
+('Natália Duarte', '1999-07-30', 'F', '15935748600', '(61) 98678-5566', 'natalia.duarte@example.com', NULL, 'paciente', 'senha123', NULL, '2025-02-04 13:10:00', 'natalia.jpg'),
+('Ricardo Pinto', '1982-04-02', 'M', '35795125800', '(71) 98245-9988', 'ricardo.pinto@example.com', NULL, 'profissional', 'senha123', NULL, '2025-02-05 15:00:00', 'ricardo.jpg'),
+('Isabela Moreira', '1994-03-22', 'F', '65412378900', '(81) 98456-3344', 'isabela.moreira@example.com', NULL, 'paciente', 'senha123', NULL, '2025-02-06 11:30:00', 'isabela.jpg'),
+('Felipe Teixeira', '1989-09-09', 'M', '78965412300', '(91) 98333-2211', 'felipe.teixeira@example.com', NULL, 'profissional', 'senha123', NULL, '2025-02-07 18:15:00', 'felipe.jpg'),
+('Tatiane Barbosa', '1995-01-16', 'F', '85296374100', '(11) 98111-7788', 'tatiane.barbosa@example.com', NULL, 'paciente', 'senha123', NULL, '2025-02-08 09:55:00', 'tatiane.jpg'),
+('Rodrigo Azevedo', '1986-08-12', 'M', '95185275300', '(21) 98888-3344', 'rodrigo.azevedo@example.com', NULL, 'administrador', 'senha123', NULL, '2025-02-10 16:40:00', 'rodrigo.png');
+
+-- MONITORAMENTOS
+
+INSERT INTO monitoramentos (dt_monitoramento, hora_monitoramento, tipo, observacoes, created_at, updated_at)
+VALUES
+('2025-11-01', '08:15:00', 'Diabetes', 'Glicemia em jejum dentro do normal.', NOW(), NOW()),
+('2025-11-01', '09:30:00', 'Hipertensao', 'Pressão um pouco elevada pela manhã.', NOW(), NOW()),
+('2025-11-02', '07:45:00', 'Diabetes', 'Glicemia pós-café da manhã controlada.', NOW(), NOW()),
+('2025-11-02', '14:00:00', 'Hipertensao', 'Pressão arterial dentro do esperado.', NOW(), NOW()),
+('2025-11-03', '10:30:00', 'Outra', 'Consulta de rotina sem alterações.', NOW(), NOW()),
+('2025-11-03', '16:15:00', 'Hipertensao', 'Pressão ligeiramente alta após atividade física.', NOW(), NOW()),
+('2025-11-04', '08:00:00', 'Diabetes', 'Glicemia em jejum um pouco acima do limite.', NOW(), NOW()),
+('2025-11-04', '11:45:00', 'Outra', 'Relato de cansaço leve, sem alterações significativas.', NOW(), NOW());
+
+-- ENDERECOS
+
+INSERT INTO enderecos (cep, logradouro, numero, complemento, bairro, cidade, estado, pais, created_at, updated_at)
+VALUES
+('01001000', 'Praça da Sé', 100, 'Apto 101', 'Sé', 'São Paulo', 'SP', 'Brasil', NOW(), NOW()),
+('20040002', 'Rua Uruguaiana', 250, 'Loja 12', 'Centro', 'Rio de Janeiro', 'RJ', 'Brasil', NOW(), NOW()),
+('30140071', 'Avenida Afonso Pena', 500, 'Sala 202', 'Centro', 'Belo Horizonte', 'MG', 'Brasil', NOW(), NOW()),
+('40020020', 'Rua Chile', 120, '', 'Centro', 'Salvador', 'BA', 'Brasil', NOW(), NOW()),
+('70040900', 'Esplanada dos Ministérios', 50, 'Bloco C', 'Zona Cívico-Administrativa', 'Brasília', 'DF', 'Brasil', NOW(), NOW()),
+('60025190', 'Rua Dr. José Lourenço', 80, '', 'Praia de Iracema', 'Fortaleza', 'CE', 'Brasil', NOW(), NOW()),
+('80020030', 'Rua XV de Novembro', 300, 'Apto 305', 'Centro', 'Curitiba', 'PR', 'Brasil', NOW(), NOW()),
+('89010000', 'Rua XV de Novembro', 150, 'Casa', 'Centro', 'Blumenau', 'SC', 'Brasil', NOW(), NOW());
+
