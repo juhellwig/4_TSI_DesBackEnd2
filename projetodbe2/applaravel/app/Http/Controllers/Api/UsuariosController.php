@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\UsuarioStoreRequest;
+use App\Http\Requests\Usuarios\UsuarioStoreRequest;
 use App\Http\Resources\UsuarioCollection;
-use App\Http\Resources\UsuarioStoredResource;
+use App\Http\Resources\Usuarios\UsuarioStoredResource;
+use App\Http\Resources\Usuarios\UsuarioUpdatedResource;
+use App\Http\Requests\Usuarios\UsuarioUpdateRequest;
+use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
 use Exception;
-use Illuminate\Http\Request;
 
 class UsuariosController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return new UsuarioCollection(Usuario::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(UsuarioStoreRequest $request)
     {
         try{
@@ -31,20 +27,26 @@ class UsuariosController extends ApiController
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Usuario $usuario)
     {
-        return new UsuarioStoredResource($usuario);
+        return new UsuarioResource($usuario);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuarioUpdateRequest $request, Usuario $usuario)
     {
-        //
+        try {
+        $data = $request->validated();
+
+        if (isset($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        $usuario->update($data);
+
+        return new UsuarioUpdatedResource($usuario);
+        } catch (Exception $error) {
+            return $this->errorHandler("Erro ao atualizar usuário!", $error, 500);
+        }
     }
 
     /**
@@ -52,6 +54,14 @@ class UsuariosController extends ApiController
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        try {
+        $usuario->delete();
+
+        return response()->json([
+            'message' => 'Usuário excluído com sucesso!'
+        ], 200);
+    } catch (Exception $error) {
+        return $this->errorHandler("Erro ao excluir usuário!", $error, 500);
+    }
     }
 }

@@ -38,7 +38,7 @@ class Monitoramentos extends Model
     {
         return [
             'dt_monitoramento' => 'date',
-            'hora_monitoramento' => 'datetime:H:i',
+            'hora_monitoramento' => 'string',
         ];
     }
 }

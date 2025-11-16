@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\EnderecosController;
-use App\Http\Controllers\MonitoramentosController;
-use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\Web\EnderecosController;
+use App\Http\Controllers\Web\MonitoramentosController;
+use App\Http\Controllers\Web\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Enderecos;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UsuarioStoreRequest extends FormRequest
+class EnderecoStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,14 @@ class UsuarioStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "nomeusuario" => "required|max: 50",
-            "dtnasc" => "required",
-            "sexo" => "required|max: 1",
-            "cpf" => "required|max: 11",
-            "telefone" => "max: 15",
-            "email" => "unique:usuarios",
-            "tipo_usuario" => "required",
-            "password" => "required|min: 5",
-            "imagem" => "nullable|string"
+            'cep' => 'required|digits:8',
+            'logradouro' => 'required|max:100',
+            'numero' => 'required|integer',
+            'complemento' => 'nullable|max:50',
+            'bairro' => 'required|max:50',
+            'cidade' => 'required|max:50',
+            'estado' => 'required|size:2',
+            'pais' => 'required|max:30',
         ];
     }
 }

@@ -1,0 +1,425 @@
+{
+	"info": {
+		"_postman_id": "5adab2e2-89cd-452d-9ec8-ea1b7e85fff6",
+		"name": "4_TSI_DesBackEnd_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38128753"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "GET Usuario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_USUARIO}}",
+							"host": [
+								"{{URL_USUARIO}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_USUARIO}}/1",
+							"host": [
+								"{{URL_USUARIO}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeusuario\": \"Marina Souza\",\r\n    \"dtnasc\": \"1990-03-15\",\r\n    \"sexo\": \"F\",\r\n    \"cpf\": \"98765432105\",\r\n    \"telefone\": \"11987654321\",\r\n    \"email\": \"marina.souza@example.com\",\r\n    \"tipo_usuario\": \"profissional\",\r\n    \"password\": \"senhaSegura123\",\r\n    \"datacadastro\": \"2025-11-09\",\r\n    \"imagem\": \"perfil_marina.png\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_USUARIO}}",
+							"host": [
+								"{{URL_USUARIO}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeusuario\": \"João Pereira\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_USUARIO}}/2",
+							"host": [
+								"{{URL_USUARIO}}"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL_USUARIO}}/26",
+							"host": [
+								"{{URL_USUARIO}}"
+							],
+							"path": [
+								"26"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enderecos",
+			"item": [
+				{
+					"name": "GET Enderecos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_ENDERECOS}}",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Enderecos por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDERECOS}}/9",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							],
+							"path": [
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Enderecos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cep\": \"89788999\",\r\n    \"logradouro\": \"teste\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"centro\",\r\n    \"cidade\": \"pelotas\",\r\n    \"estado\": \"RS\",\r\n    \"pais\": \"Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_ENDERECOS}}",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Enderecos",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cidade\": \"canguçu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_ENDERECOS}}/10",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							],
+							"path": [
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Enderecos",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDERECOS}}/10",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							],
+							"path": [
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Monitoramentos",
+			"item": [
+				{
+					"name": "GET Monitoramentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Monitoramentos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dt_monitoramento\": \"2025-11-16\",\r\n  \"hora_monitoramento\": \"14:30\",\r\n  \"tipo\": \"Diabetes\",\r\n  \"observacoes\": \"Paciente apresentou glicemia elevada após almoço.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Monitoramentos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hora_monitoramento\": \"15:00\",\r\n  \"observacoes\": \"Glicemia corrigida com medicação.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}/14",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							],
+							"path": [
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Monitoramentos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}/14",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							],
+							"path": [
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_USUARIO",
+			"value": ""
+		},
+		{
+			"key": "URL_ENDERECOS",
+			"value": ""
+		},
+		{
+			"key": "URL_MONITORAMENTOS",
+			"value": ""
+		}
+	]
+}
