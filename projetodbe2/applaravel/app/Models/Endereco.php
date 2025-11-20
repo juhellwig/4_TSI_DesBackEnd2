@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enderecos extends Model
+class Endereco extends Model
 {
     /** @use HasFactory<\Database\Factories\EnderecosFactory> */
     use HasFactory;
@@ -23,6 +23,7 @@ class Enderecos extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'id',
         'cep',
         'logradouro',
         'numero',

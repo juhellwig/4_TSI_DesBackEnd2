@@ -6,7 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UsuarioUpdatedResource extends JsonResource
+class UserUpdatedResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,8 +18,13 @@ class UsuarioUpdatedResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nomeusuario' => $this->nomeusuario,
+            'name' => $this->name,
+            'telefone'=> $this->telefone,
+            'imagem' => $this->imagem,
             'email' => $this->email,
+            'password' => $this->password,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 

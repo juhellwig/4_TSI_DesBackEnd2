@@ -15,7 +15,18 @@ class EnderecoUpdatedResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id'          => $this->id,
+            'cep'         => $this->cep,
+            'logradouro'  => $this->logradouro,
+            'numero'      => $this->numero,
+            'complemento' => $this->complemento,
+            'bairro'      => $this->bairro,
+            'cidade'      => $this->cidade,
+            'estado'      => $this->estado,
+            'pais'        => $this->pais,
+            'updated_at'  => $this->updated_at,
+        ];
     }
 
      public function withResponse(Request $request, JsonResponse $response): void

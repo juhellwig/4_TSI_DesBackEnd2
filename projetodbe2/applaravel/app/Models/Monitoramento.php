@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Monitoramentos extends Model
+class Monitoramento extends Model
 {
     /** @use HasFactory<\Database\Factories\MonitoramentosFactory> */
     use HasFactory;

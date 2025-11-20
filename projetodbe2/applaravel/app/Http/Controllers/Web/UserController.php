@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Usuario;
+use App\Models\User;
 
-class UsuariosController{
+class UserController{
     public function listarUsuarios(){
-        $listUsuarios = Usuario::all();
+        $listUsuarios = User::all();
         return view('usuarios/usuarios', compact('listUsuarios'));
     }
 
@@ -30,7 +30,7 @@ class UsuariosController{
     }
 
     // Salva no banco
-    Usuario::create($data);
+    User::create($data);
 
     return redirect()->route('usuarios.lista')
                      ->with('success', 'Usuário cadastrado com sucesso!');
@@ -38,13 +38,13 @@ class UsuariosController{
 
     // Exibir formulário de edição
     public function edit($id){
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         return view('usuarios.edit', compact('usuario'));
     }
 
     // Atualizar usuário
     public function update($id){
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $data = request()->all();
 
         // Upload de imagem se houver
@@ -65,7 +65,7 @@ class UsuariosController{
 
     // Excluir usuário
     public function destroy($id){
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $usuario->delete();
 
         return redirect()->route('usuarios.lista')

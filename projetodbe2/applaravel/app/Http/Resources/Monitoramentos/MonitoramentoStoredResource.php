@@ -16,12 +16,13 @@ class MonitoramentoStoredResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'dt_monitoramento' => $this->dt_monitoramento->format('d/m/Y'),
-            'hora_monitoramento' => $this->hora_monitoramento,
-            'tipo' => $this->tipo,
-            'observacoes' => $this->observacoes,
-            'created_at' => $this->created_at->format('d/m/Y H:i'),
+            'id'                => $this->id,
+            'dt_monitoramento'  => $this->dt_monitoramento,
+            'hora_monitoramento'=> $this->hora_monitoramento,
+            'tipo'              => $this->tipo,
+            'observacoes'       => $this->observacoes,
+            'created_at'        => $this->created_at,
+            'updated_at'        => $this->updated_at,
         ];
     }
 
@@ -33,7 +34,7 @@ class MonitoramentoStoredResource extends JsonResource
     public function with(Request $request): array
     {
         return [
-            'message' => 'Monitoramento criado com sucesso!',
+            'message' => 'Monitoramento criado com sucesso!'
         ];
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Monitoramentos;
+use App\Models\Monitoramento;
 use Illuminate\Http\Request;
 
-class MonitoramentosController{
+class MonitoramentoController{
     // LISTAR
 
     public function listarMonitoramentos(){
-        $listMonitoramentos = Monitoramentos::all();
+        $listMonitoramentos = Monitoramento::all();
         return view ('monitoramentos/monitoramentos', compact('listMonitoramentos'));
     }
 
@@ -33,7 +33,7 @@ class MonitoramentosController{
         $data['observacoes'] = $data['observacoes'] ?? '';
 
         // Criar registro
-        Monitoramentos::create($data);
+        Monitoramento::create($data);
 
         // Redirecionar para listagem com mensagem
         return redirect()->route('monitoramentos.lista')
@@ -43,12 +43,12 @@ class MonitoramentosController{
     // UPDATE
 
     public function edit($id){
-        $monitoramento = Monitoramentos::findOrFail($id);
+        $monitoramento = Monitoramento::findOrFail($id);
         return view('monitoramentos.edit', compact('monitoramento'));
     }
 
     public function update(Request $request, $id){
-        $monitoramento = Monitoramentos::findOrFail($id);
+        $monitoramento = Monitoramento::findOrFail($id);
 
         $request->validate([
             'dt_monitoramento' => 'required|date',
@@ -69,7 +69,7 @@ class MonitoramentosController{
     // DELETE
     
     public function destroy($id){
-        $monitoramento = Monitoramentos::findOrFail($id);
+        $monitoramento = Monitoramento::findOrFail($id);
         $monitoramento->delete();
 
         return redirect()->route('monitoramentos.lista')

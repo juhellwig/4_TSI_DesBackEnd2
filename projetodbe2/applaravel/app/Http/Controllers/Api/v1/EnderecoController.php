@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Resources\EnderecosCollection;
+use App\Http\Resources\EnderecoCollection;
 use App\Http\Resources\Enderecos\EnderecoStoredResource;
 use App\Http\Requests\Enderecos\EnderecoStoreRequest;
 use App\Http\Requests\Enderecos\EnderecoUpdateRequest;
 use App\Http\Resources\Enderecos\EnderecoUpdatedResource;
-use App\Http\Resources\EnderecosResource;
-use App\Models\Enderecos;
+use App\Http\Resources\EnderecoResource;
+use App\Models\Endereco;
 use Exception;
 
-class EnderecosController extends ApiController
+class EnderecoController extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return new EnderecosCollection(Enderecos::all());
+        return new EnderecoCollection(Endereco::all());
     }
 
     /**
@@ -27,7 +27,7 @@ class EnderecosController extends ApiController
     public function store(EnderecoStoreRequest $request)
     {
         try {
-            $endereco = Enderecos::create($request->validated());
+            $endereco = Endereco::create($request->validated());
             return new EnderecoStoredResource($endereco);
         } catch (\Exception $error) {
             return $this->errorHandler("Erro ao criar novo endereço!", $error, 500);
@@ -38,15 +38,15 @@ class EnderecosController extends ApiController
     /**
      * Display the specified resource.
      */
-    public function show(Enderecos $endereco)
+    public function show(Endereco $endereco)
     {
-        return new EnderecosResource($endereco);
+        return new EnderecoResource($endereco);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(EnderecoUpdateRequest $request, Enderecos $endereco)
+    public function update(EnderecoUpdateRequest $request, Endereco $endereco)
     {
          try {
             $endereco->update($request->validated());
@@ -59,7 +59,7 @@ class EnderecosController extends ApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Enderecos $endereco)
+    public function destroy(Endereco $endereco)
     {
         try {
             $endereco->delete();

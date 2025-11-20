@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Enderecos;
+use App\Models\Endereco;
 use Illuminate\Http\Request;
 
-class EnderecosController{
+class EnderecoController{
     //LISTAR
 
     public function listarEnderecos(){
-        $listEnderecos = Enderecos::orderBy('id')->get();
+        $listEnderecos = Endereco::orderBy('id')->get();
         return view('enderecos/enderecos', compact('listEnderecos'));
     }
 
@@ -33,7 +33,7 @@ class EnderecosController{
         ]);
 
         // Criar registro
-        Enderecos::create($request->all());
+        Endereco::create($request->all());
 
         // Redirecionar para listagem com mensagem
         return redirect()->route('enderecos.lista')
@@ -43,13 +43,13 @@ class EnderecosController{
     // UPDATE
 
     public function edit($id){
-        $endereco = Enderecos::findOrFail($id);
+        $endereco = Endereco::findOrFail($id);
         return view('enderecos.edit', compact('endereco'));
     }
 
     // Atualizar registro no banco
     public function update(Request $request, $id){
-        $endereco = Enderecos::findOrFail($id);
+        $endereco = Endereco::findOrFail($id);
 
         $request->validate([
             'cep' => 'required|size:8',
@@ -74,7 +74,7 @@ class EnderecosController{
     }
 
     public function destroy($id){
-    $endereco = Enderecos::findOrFail($id);
+    $endereco = Endereco::findOrFail($id);
     $endereco->delete();
 
     return redirect()->route('enderecos.lista')

@@ -22,20 +22,26 @@ class MonitoramentoUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'dt_monitoramento' => 'sometimes|date',
-            'hora_monitoramento' => 'sometimes|date_format:H:i',
-            'tipo' => 'sometimes|in:Diabetes,Hipertensao,Outra',
-            'observacoes' => 'nullable|string',
+            'dt_monitoramento'  => 'required|date',
+            'hora_monitoramento'=> 'required|date_format:H:i',
+            'tipo'              => 'required|in:Diabetes,Hipertensao,Outra',
+            'observacoes'       => 'nullable|string'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'dt_monitoramento.date' => 'A data deve ser válida.',
-            'hora_monitoramento.date_format' => 'A hora deve estar no formato HH:MM.',
+            'dt_monitoramento.required' => 'A data do monitoramento é obrigatória.',
+            'dt_monitoramento.date' => 'A data informada é inválida.',
+
+            'hora_monitoramento.required' => 'A hora do monitoramento é obrigatória.',
+            'hora_monitoramento.date_format' => 'O formato da hora deve ser HH:MM.',
+
+            'tipo.required' => 'O tipo é obrigatório.',
             'tipo.in' => 'O tipo deve ser Diabetes, Hipertensao ou Outra.',
-            'observacoes.string' => 'As observações devem ser texto.',
+
+            'observacoes.string' => 'As observações devem ser um texto válido.',
         ];
     }
 }

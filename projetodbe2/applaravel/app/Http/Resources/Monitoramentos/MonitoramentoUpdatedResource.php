@@ -17,12 +17,12 @@ class MonitoramentoUpdatedResource extends JsonResource
     public function toArray(Request $request): array
     {
          return [
-            'id' => $this->id,
-            'dt_monitoramento' => $this->dt_monitoramento,
+            'id'                 => $this->id,
+            'dt_monitoramento'   => $this->dt_monitoramento,
             'hora_monitoramento' => $this->hora_monitoramento,
-            'tipo' => $this->tipo,
-            'observacoes' => $this->observacoes,
-            'updated_at' => $this->updated_at,
+            'tipo'               => $this->tipo,
+            'observacoes'        => $this->observacoes,
+            'updated_at'         => $this->updated_at,
         ];
     }
 
