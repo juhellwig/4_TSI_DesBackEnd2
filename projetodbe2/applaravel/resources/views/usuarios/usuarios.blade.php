@@ -91,13 +91,13 @@
                 @foreach ($listUsuarios as $usuario)
                     <tr>
                         <td>{{ $usuario->id }}</td>
-                        <td>{{ $usuario->nomeusuario }}</td>
+                        <td>{{ $usuario->name }}</td>
                         <td>{{ $usuario->email }}</td>
                         <td>{{ ucfirst($usuario->tipo_usuario) }}</td>
                         <td>
                             @if ($usuario->imagem)
                                 <img src="{{ asset('imagens/' . $usuario->imagem) }}"
-                                     alt="Imagem de {{ $usuario->nomeusuario }}">
+                                     alt="Imagem de {{ $usuario->name }}">
                             @else
                                 <em>Sem imagem</em>
                             @endif
@@ -132,6 +132,9 @@
     <br>
     <br>
     <a href="/monitoramentos">Listagem de monitoramentos</a>
+    <br>
+    <br>
+    <a href="/">Voltar para a tela inicial/Login</a>
 
 </body>
 

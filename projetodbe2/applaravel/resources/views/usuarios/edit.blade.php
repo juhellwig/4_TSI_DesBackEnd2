@@ -58,8 +58,8 @@
     <form action="{{ route('usuarios.update', $usuario->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <label for="nomeusuario">Nome</label>
-        <input type="text" name="nomeusuario" id="nomeusuario" value="{{ $usuario->nomeusuario }}" required>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" value="{{ $usuario->name }}" required>
 
         <label for="dtnasc">Data de Nascimento</label>
         <input type="date" name="dtnasc" id="dtnasc" value="{{ $usuario->dtnasc }}" required>
@@ -96,7 +96,7 @@
         <label for="imagem">Imagem</label>
         <input type="file" name="imagem" id="imagem">
         @if ($usuario->imagem)
-            <img src="{{ asset('imagens/' . $usuario->imagem) }}" alt="Imagem de {{ $usuario->nomeusuario }}">
+            <img src="{{ asset('imagens/' . $usuario->imagem) }}" alt="Imagem de {{ $usuario->name }}">
         @endif
 
         <button type="submit">Salvar Alterações</button>

@@ -10,59 +10,80 @@ use App\Http\Resources\Monitoramentos\MonitoramentoUpdatedResource;
 use App\Http\Resources\MonitoramentoResource;
 use App\Models\Monitoramento;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class MonitoramentoController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return new MonitoramentoCollection(Monitoramento::all());
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(MonitoramentoStoreRequest $request)
     {
         try {
-            $monitoramento = Monitoramento::create($request->validated());
+            $data = $request->validated();
+            
+            $data['user_id'] = Auth::id(); 
+            
+            $monitoramento = Monitoramento::create($data);
             return new MonitoramentoStoredResource($monitoramento);
+
         } catch (Exception $error) {
             return $this->errorHandler("Erro ao criar monitoramento", $error, 500);
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Monitoramento $monitoramento)
+    public function show(Request $request, Monitoramento $monitoramento)
     {
+        $usuarioLogado = $request->user();
+        
+        // if (
+        //     $usuarioLogado->id !== $monitoramento->user_id && 
+        //     !$usuarioLogado->tokenCan('is-admin') 
+        // ) {
+        //     return response()->json(['message' => 'Você não tem permissão para visualizar este monitoramento.'], 403);
+        // }
+
         return new MonitoramentoResource($monitoramento);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(MonitoramentoUpdateRequest $request, Monitoramento $monitoramento)
     {
         try {
+            $usuarioLogado = $request->user();
+            
+            $ehDono = $usuarioLogado->id === $monitoramento->user_id;
+            $ehAdmin = $usuarioLogado->tokenCan('is-admin');
+
+            if (!$ehDono && !$ehAdmin) {
+                return response()->json(['message' => 'Você só pode editar seus próprios monitoramentos.'], 403);
+            }
+            
             $monitoramento->update($request->validated());
             return new MonitoramentoUpdatedResource($monitoramento);
+
         } catch (Exception $error) {
             return $this->errorHandler("Erro ao atualizar monitoramento", $error, 500);
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Monitoramento $monitoramento)
+    public function destroy(Request $request, Monitoramento $monitoramento)
     {
         try {
+            $usuarioLogado = $request->user();
+            
+            $ehDono = $usuarioLogado->id === $monitoramento->user_id;
+            $ehAdmin = $usuarioLogado->tokenCan('is-admin');
+
+            if (!$ehDono && !$ehAdmin) {
+                return response()->json(['message' => 'Você só pode excluir seus próprios monitoramentos.'], 403);
+            }
+            
             $monitoramento->delete();
             return response()->json(['message' => 'Monitoramento excluído com sucesso!'], 200);
+
         } catch (Exception $error) {
             return $this->errorHandler("Erro ao excluir monitoramento!", $error, 500);
         }

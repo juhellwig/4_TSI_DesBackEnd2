@@ -21,7 +21,7 @@
         @csrf
 
         <label>Nome
-            <input type="text" name="nomeusuario">
+            <input type="text" name="name">
         </label>
 
         <label>Data de Nascimento

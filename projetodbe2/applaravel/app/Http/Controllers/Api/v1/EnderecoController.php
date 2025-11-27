@@ -10,65 +10,82 @@ use App\Http\Resources\Enderecos\EnderecoUpdatedResource;
 use App\Http\Resources\EnderecoResource;
 use App\Models\Endereco;
 use Exception;
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Auth;
 
 class EnderecoController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return new EnderecoCollection(Endereco::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(EnderecoStoreRequest $request)
     {
         try {
-            $endereco = Endereco::create($request->validated());
+            $data = $request->validated();
+            
+            $data['user_id'] = Auth::id(); 
+            
+            $endereco = Endereco::create($data);
             return new EnderecoStoredResource($endereco);
-        } catch (\Exception $error) {
+            
+        } catch (Exception $error) {
             return $this->errorHandler("Erro ao criar novo endereço!", $error, 500);
-
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Endereco $endereco)
+    public function show(Request $request, Endereco $endereco)
     {
+        $usuarioLogado = $request->user();
+        
+        // $ehDono = $usuarioLogado->id === $endereco->user_id;
+        // $ehAdminOuPro = $usuarioLogado->tokenCan('is-admin') || $usuarioLogado->tokenCan('is-pro');
+
+        // if (!$ehDono && !$ehAdminOuPro) {
+        //     return response()->json(['message' => 'Você não tem permissão para visualizar este endereço.'], 403);
+        // }
+
         return new EnderecoResource($endereco);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(EnderecoUpdateRequest $request, Endereco $endereco)
     {
-         try {
+        try {
+            $usuarioLogado = $request->user();
+            
+            $ehDono = $usuarioLogado->id === $endereco->user_id;
+            $ehAdminOuPro = $usuarioLogado->tokenCan('is-admin') || $usuarioLogado->tokenCan('is-pro');
+
+            if (!$ehDono && !$ehAdminOuPro) {
+                return response()->json(['message' => 'Você só pode editar seus próprios endereços.'], 403);
+            }
+            
             $endereco->update($request->validated());
             return new EnderecoUpdatedResource($endereco);
-        } catch (\Exception $e) {
+            
+        } catch (Exception $error) {
             return $this->errorHandler("Erro ao atualizar endereço!", $error, 500);
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Endereco $endereco)
+    public function destroy(Request $request, Endereco $endereco)
     {
         try {
-            $endereco->delete();
-            return response()->json([
-                'message' => 'Endereço removido com sucesso!'
-            ], 200);
-        } catch (\Exception $e) {
-            return $this->errorHandler("Erro ao excluir endereço!", $error, 500);
+            $usuarioLogado = $request->user();
+            
+            $ehDono = $usuarioLogado->id === $endereco->user_id;
+            $ehAdminOuPro = $usuarioLogado->tokenCan('is-admin') || $usuarioLogado->tokenCan('is-pro');
 
+            if (!$ehDono && !$ehAdminOuPro) {
+                return response()->json(['message' => 'Você só pode excluir seus próprios endereços.'], 403);
+            }
+            
+            $endereco->delete();
+            return response()->json(['message' => 'Endereço removido com sucesso!'], 200);
+            
+        } catch (Exception $error) {
+            return $this->errorHandler("Erro ao excluir endereço!", $error, 500);
         }
     }
 }
