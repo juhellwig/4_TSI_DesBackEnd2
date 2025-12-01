@@ -1,0 +1,729 @@
+{
+	"info": {
+		"_postman_id": "5adab2e2-89cd-452d-9ec8-ea1b7e85fff6",
+		"name": "4_TSI_DesBackEnd_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38128753"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "GET Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL_USUARIO}}",
+							"host": [
+								"{{URL_USUARIO}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Usuario por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_USUARIO}}/4",
+							"host": [
+								"{{URL_USUARIO}}"
+							],
+							"path": [
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"name\": \"Ricardo Silva\",\r\n//   \"dtnasc\": \"1978-08-15\",\r\n//   \"sexo\": \"M\",\r\n//   \"cpf\": \"12345678901\",\r\n//   \"telefone\": \"21976543210\",\r\n//   \"email\": \"ricardo.silva@profissional.com.br\",\r\n//   \"tipo_usuario\": \"profissional\",\r\n//   \"password\": \"senhaDoProfissional\",\r\n//   \"datacadastro\": \"2025-11-26\",\r\n//   \"imagem\": \"ricardo_adm.png\"\r\n// }\r\n\r\n{\r\n  \"name\": \"Mariana Santos\",\r\n  \"dtnasc\": \"2000-05-10\",\r\n  \"sexo\": \"F\",\r\n  \"cpf\": \"98765432109\",\r\n  \"telefone\": \"31998765432\",\r\n  \"email\": \"mariana.santos@paciente.com.br\",\r\n  \"tipo_usuario\": \"paciente\",\r\n  \"password\": \"senhaDoPaciente\",\r\n  \"datacadastro\": \"2025-11-26\",\r\n  \"imagem\": \"mariana_paciente.png\"\r\n}\r\n\r\n// {\r\n//   \"name\": \"João Ferreira\",\r\n//   \"dtnasc\": \"1995-12-01\",\r\n//   \"sexo\": \"M\",\r\n//   \"cpf\": \"45678901234\",\r\n//   \"telefone\": \"61987654321\",\r\n//   \"email\": \"joao.ferreira@paciente.com.br\",\r\n//   \"tipo_usuario\": \"paciente\",\r\n//   \"password\": \"SenhaForte123\",\r\n//   \"datacadastro\": \"2025-11-26\",\r\n//   \"imagem\": \"joao_paciente.png\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_USUARIO}}",
+							"host": [
+								"{{URL_USUARIO}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "tipo_usuario",
+									"value": "profissional",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_USUARIO}}/5",
+							"host": [
+								"{{URL_USUARIO}}"
+							],
+							"path": [
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL_USUARIO}}/17",
+							"host": [
+								"{{URL_USUARIO}}"
+							],
+							"path": [
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enderecos",
+			"item": [
+				{
+					"name": "GET Enderecos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_ENDERECOS}}",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Enderecos por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDERECOS}}/1",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Enderecos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"logradouro\": \"Rua das Flores\",\r\n  \"numero\": \"120\",\r\n  \"bairro\": \"Centro\",\r\n  \"cidade\": \"Porto Alegre\",\r\n  \"estado\": \"RS\",\r\n  \"cep\": \"90000000\",\r\n  \"complemento\": \"Apto 301\",\r\n  \"pais\" : \"Brasil\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_ENDERECOS}}",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Enderecos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"logradouro\": \"Avenida Brasil\",\r\n  \"numero\": \"455\",\r\n  \"bairro\": \"Jardim América\",\r\n  \"cidade\": \"Curitiba\",\r\n  \"estado\": \"PR\",\r\n  \"cep\": \"80000000\",\r\n  \"complemento\": \"Casa\",\r\n  \"pais\": \"Brasil\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_ENDERECOS}}/1",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Enderecos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDERECOS}}/1",
+							"host": [
+								"{{URL_ENDERECOS}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Monitoramentos",
+			"item": [
+				{
+					"name": "GET Monitoramentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Monitoramentos por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}/1",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Monitoramentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dt_monitoramento\": \"2025-01-10\",\r\n  \"hora_monitoramento\": \"08:30:55\",\r\n  \"tipo\": \"Diabetes\",\r\n  \"observacoes\": \"Medição antes do café.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Monitoramentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dt_monitoramento\": \"2025-01-11\",\r\n  \"hora_monitoramento\": \"09:00\",\r\n  \"tipo\": \"Diabetes\",\r\n  \"observacoes\": \"Revisado após mudança na medicação.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}/1",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Monitoramentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL_MONITORAMENTOS}}/11",
+							"host": [
+								"{{URL_MONITORAMENTOS}}"
+							],
+							"path": [
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LOGIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const {token} = pm.response.json();\r",
+							"token && pm.collectionVariables.set(\"TOKEN\", token);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "juliana@admin.com.br",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "senhaDoAdm",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "profissional@teste.com.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "paciente@teste.com.br",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/api/v1/tokens/login",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tokens",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT Padrão",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/api/v1/tokens/logout",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tokens",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT Revoke_all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "revoke_all",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/api/v1/tokens/logout",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tokens",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_USUARIO",
+			"value": ""
+		},
+		{
+			"key": "URL_ENDERECOS",
+			"value": ""
+		},
+		{
+			"key": "URL_MONITORAMENTOS",
+			"value": ""
+		},
+		{
+			"key": "TOKEN",
+			"value": ""
+		},
+		{
+			"key": "URL_BASE",
+			"value": ""
+		}
+	]
+}

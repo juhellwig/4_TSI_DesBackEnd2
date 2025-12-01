@@ -32,6 +32,7 @@ class Endereco extends Model
         'cidade',
         'estado',
         'pais',
+        'user_id',
     ];
 
     /**
