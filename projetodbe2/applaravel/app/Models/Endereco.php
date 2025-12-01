@@ -59,4 +59,9 @@ class Endereco extends Model
             'pais' => 'string',
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

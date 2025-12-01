@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -51,5 +52,24 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function endereco()
+    {
+        return $this->hasOne(Endereco::class);
+    }
+    /**
+     * Get the user associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function monitoramentosProfissional()
+    {
+        return $this->hasMany(Monitoramento::class, 'profissional_id');
+    }
+
+    public function monitoramentosPaciente()
+    {
+        return $this->hasMany(Monitoramento::class, 'paciente_id');
     }
 }

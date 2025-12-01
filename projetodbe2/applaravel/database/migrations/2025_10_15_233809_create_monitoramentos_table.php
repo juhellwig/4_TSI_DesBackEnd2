@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('monitoramentos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('paciente_id')
+                    ->constrained('users')
+                    ->nullable()
+                    ->onDelete('set null');
+            $table->foreignId('profissional_id')
+                    ->constrained('users')
+                    ->nullable()
+                    ->onDelete('set null');
             $table->date('dt_monitoramento');
             $table->time('hora_monitoramento');
             $table->enum('tipo', ['Diabetes', 'Hipertensao', 'Outra']);

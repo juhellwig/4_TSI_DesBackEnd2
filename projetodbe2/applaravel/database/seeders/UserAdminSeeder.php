@@ -19,7 +19,7 @@ class UserAdminSeeder extends Seeder
         if(empty($admin_pass))
             throw new Exception("ERRO: Admin Password!");
 
-        User::factory()->create([
+        User::factory()->administrador()->create([
             'name' => 'Admin User',
             'email' => 'juliana@admin.com.br',
             'tipo_usuario' => 'administrador',

@@ -41,4 +41,14 @@ class Monitoramento extends Model
             'hora_monitoramento' => 'string',
         ];
     }
+
+    public function paciente()
+    {
+        return $this->belongsTo(User::class, 'paciente_id');
+    }
+
+    public function profissional()
+    {
+        return $this->belongsTo(User::class, 'profissional_id');
+    }
 }

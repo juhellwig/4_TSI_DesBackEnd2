@@ -23,22 +23,58 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $tipos = ['paciente', 'profissional', 'administrador'];
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'dtnasc' => $this->faker->date(),
-            'sexo'   => $this->faker->randomElement(['M', 'F']),
+            'sexo'  => $this->faker->randomElement(['M', 'F']),
             'cpf' => $this->faker->numerify('###########'),
             'telefone' => $this->faker->numerify('############'),
-            'tipo_usuario' => $this->faker->randomElement(['paciente', 'profissional', 'administrador']),
-            'datacadastro' => $this->faker->date(),
-            'imagem' => $this->faker->imageUrl(200, 200, 'people'),
+            // O tipo padrão é aleatório. Isso é sobrescrito pelos estados abaixo.
+            'tipo_usuario' => $this->faker->randomElement($tipos), 
+            'datacadastro' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'imagem' => $this->faker->imageUrl(200, 200, 'people', true, 'Faker Image'),
+            
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
     }
 
+    // --- FACTORY STATES (Para uso nos Seeders) ---
+
+    /**
+     * Estado: Indica que o usuário é um Administrador.
+     */
+    public function administrador(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'tipo_usuario' => 'administrador',
+        ]);
+    }
+
+    /**
+     * Estado: Indica que o usuário é um Profissional.
+     */
+    public function profissional(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'tipo_usuario' => 'profissional',
+        ]);
+    }
+
+    /**
+     * Estado: Indica que o usuário é um Paciente.
+     */
+    public function paciente(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'tipo_usuario' => 'paciente',
+        ]);
+    }
+    
     /**
      * Indicate that the model's email address should be unverified.
      */
