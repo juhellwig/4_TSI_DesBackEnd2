@@ -21,14 +21,14 @@ class EnderecoStoreRequest extends FormRequest
      */
     public function rules(): array{
         return [
-            "cep"         => "required|size:8",
-            "logradouro"  => "required|max:100",
-            "numero"      => "required|integer",
-            "complemento" => "nullable|max:50",
-            "bairro"      => "required|max:50",
-            "cidade"      => "required|max:50",
-            "estado"      => "required|size:2",
-            "pais"        => "required|max:30",
+            "cep"                => "required|size:8",
+            "logradouro"         => "required|max:100",
+            "numero"             => "required|integer",
+            "complemento"        => "nullable|max:50",
+            "bairro"             => "required|max:50",
+            "cidade"             => "required|max:50",
+            "estado"             => "required|size:2",
+            "pais"               => "required|max:30",
         ];
     }
 

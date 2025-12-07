@@ -17,6 +17,8 @@ class MonitoramentoStoredResource extends JsonResource
     {
         return [
             'id'                => $this->id,
+            'paciente_id'         => $this->paciente_id,
+            'profissional_id'     => $this->profissional_id,
             'dt_monitoramento'  => $this->dt_monitoramento,
             'hora_monitoramento'=> $this->hora_monitoramento,
             'tipo'              => $this->tipo,

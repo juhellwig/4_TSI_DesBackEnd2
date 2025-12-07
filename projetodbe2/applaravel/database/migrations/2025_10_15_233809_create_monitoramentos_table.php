@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('paciente_id')
                     ->constrained('users')
-                    ->nullable()
-                    ->onDelete('set null');
+                    ->cascadeOnDelete();
             $table->foreignId('profissional_id')
                     ->constrained('users')
                     ->nullable()
@@ -24,7 +23,7 @@ return new class extends Migration
             $table->date('dt_monitoramento');
             $table->time('hora_monitoramento');
             $table->enum('tipo', ['Diabetes', 'Hipertensao', 'Outra']);
-            $table->text('observacoes');
+            $table->text('observacoes')->nullable();
             $table->timestamps();
         });
     }

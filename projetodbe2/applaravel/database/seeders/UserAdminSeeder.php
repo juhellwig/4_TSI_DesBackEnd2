@@ -24,7 +24,8 @@ class UserAdminSeeder extends Seeder
             'email' => 'juliana@admin.com.br',
             'tipo_usuario' => 'administrador',
             'is_admin' => true,
-            'password' => Hash::make($admin_pass)
+            'password' => Hash::make($admin_pass),
+            'imagem' => 'https://placehold.co/200x200/5cb85c/ffffff?text=ADM'
         ]);
     }
 }

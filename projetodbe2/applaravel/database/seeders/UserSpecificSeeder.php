@@ -22,6 +22,7 @@ class UserSpecificSeeder extends Seeder
             'password' => Hash::make('password'), 
             'cpf' => '55544433322',
             'datacadastro' => now(),
+            'imagem' => 'https://placehold.co/200x200/2962ff/ffffff?text=PRO'
         ]);
 
         //fixo
@@ -31,6 +32,7 @@ class UserSpecificSeeder extends Seeder
             'password' => Hash::make('password'), 
             'cpf' => '11122233344',
             'datacadastro' => now(),
+            'imagem' => 'https://placehold.co/200x200/ff6d00/ffffff?text=PAC'
         ]);
         
         //dados aleatórios em massa

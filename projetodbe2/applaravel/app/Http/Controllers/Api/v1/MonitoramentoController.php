@@ -23,15 +23,24 @@ class MonitoramentoController extends ApiController
     public function store(MonitoramentoStoreRequest $request)
     {
         try {
-            $data = $request->validated();
+            $data = $request->validated(); 
             
-            $data['user_id'] = Auth::id(); 
+            $user = $request->user();
+
+            if ($user && $user->tipo_usuario === 'profissional') {
+                $data['profissional_id'] = $user->id; 
+            } 
+            // Se for 'admin' ou outro tipo (como 'paciente', se tiver permissão), 
+            // o campo 'profissional_id' NÃO é adicionado a $data. 
+            // Como o campo é nullable no banco de dados e não é required no Request,
+            // ele será inserido como NULL, atendendo a regra.
             
-            $monitoramento = Monitoramento::create($data);
+            $monitoramento = Monitoramento::create($data); 
+
             return new MonitoramentoStoredResource($monitoramento);
 
-        } catch (Exception $error) {
-            return $this->errorHandler("Erro ao criar monitoramento", $error, 500);
+        } catch (Exception $error) {    
+            return $this->errorHandler("Erro ao criar monitoramento", $error, 500); 
         }
     }
 

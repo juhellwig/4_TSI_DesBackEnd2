@@ -23,6 +23,8 @@ class Monitoramento extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'paciente_id',
+        'profissional_id',
         'dt_monitoramento',
         'hora_monitoramento',
         'tipo',
