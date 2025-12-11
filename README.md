@@ -103,6 +103,7 @@ Siga estes passos para configurar e colocar o projeto em funcionamento:
 git clone https://github.com/juhellwig/4_TSI_DesBackEnd2.git
 cd projetodbe2
 cd applaravel
+```
 
 ### 2. Instalar Dependências do PHP
 
@@ -110,6 +111,7 @@ Utilize o Composer para instalar todas as bibliotecas e pacotes definidos no arq
 
 ```bash
 composer install
+```
 
 ### 3. Configurar o Banco de Dados
 
@@ -122,12 +124,14 @@ DB_PORT=5432
 DB_DATABASE=applaravel
 DB_USERNAME=postgres
 DB_PASSWORD=1234
+```
 
 Se atente também as seguintes configurações:
 
 ```bash
 APP_URL=http://localhost:8000
 APP_ADMIN_PASS = senhaDoAdm
+```
 
 ### 4. Executar Migrações e Seeders (Criação de Estrutura e Dados Iniciais)
 
@@ -136,11 +140,13 @@ Este passo cria as tabelas definidas nas migrações e já insere alguns dados d
 ```bash
 
 php artisan migrate -seed
+```
 
 ### 5. Em um terminal diferente, rode o servidor
 
 ```bash
 composer run dev
+```
 
 ---
 
