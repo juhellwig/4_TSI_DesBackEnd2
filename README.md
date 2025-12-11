@@ -139,7 +139,7 @@ Este passo cria as tabelas definidas nas migrações e já insere alguns dados d
 
 ```bash
 
-php artisan migrate -seed
+php artisan migrate:fresh -seed
 ```
 
 ### 5. Em um terminal diferente, rode o servidor
