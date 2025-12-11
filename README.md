@@ -1,33 +1,19 @@
 # 📚 Desenvolvimento Back-End 2 - PHP Laravel
 ## IFSUL - Curso Superior de Tecnologia em Sistemas para Internet - 2025.02
 
-Este repositório contém os materiais e exemplos práticos da disciplina de Desenvolvimento de Back-End 2, focada em PHP e Laravel.
+# 🚀 Projeto em Laravel
 
-## 📂 Estrutura de Pastas e Arquios do Repositório
+Este projeto é uma aplicação web desenvolvida em **Laravel**, seguindo o padrão MVC. Ele tem como objetivo gerenciar usuários, seus endereços e os monitoramentos de saúde que os usuários do tipo paciente registram.
 
-```
-topico01/
-└── revisao_poo_php/
-    ├── exemplo_01.php
-    ├── exemplo_02.php
-    ├── exemplo_03.php
-    ├── exemplo_04.php
-    ├── exemplo_05.php
-    ├── exemplo_06.php
-    ├── exemplo_07.php
-    ├── exemplo_08.php
-    └── classes/
-        ├── Funcionario.php
-        ├── IMC.php
-        ├── Pessoa.php
-        └── Professor.php
-```
+## 📋 Pré-requisitos
 
-## 📖 Tópicos Abordados
+Certifique-se de que os seguintes softwares estão instalados na sua máquina antes de prosseguir com a instalação:
 
-### Tópico 01: Revisão de POO em PHP
-📋 **[Ver documentação completa e exemplos](topico01/revisao_poo_php/README.md)**
+* **PHP**
+* **Composer**
+* Servidor **Banco de Dados** PostgreSQL
 
+-- Reaproveitando conteúdo de Configuração do Prof. Gill -> https://github.com/gillgonzales
 
 ## 🛠️ Configuração do Ambiente de Desenvolvimento
 
@@ -107,24 +93,55 @@ topico01/
   * **Git para iniciantes**: [Link](https://www.youtube.com/watch?v=8JJ101D3knE)
   * **Pro Git - Livro Gratuito**: [Link](https://git-scm.com/book/pt-br/v2)
 
-### Configuração Inicial
+## 🛠️ Instalação
 
- * **Uso de chaves SSH para acesso ao GitHub**:[Link](https://docs.github.com/pt/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+Siga estes passos para configurar e colocar o projeto em funcionamento:
 
-#### Configurando Chave SSH
+### 1. Clonar o Repositório
+
 ```bash
-git config core.sshCommand 'ssh -o IdentitiesOnly=yes -i ~/.ssh/NOME_DA_CHAVE -F /dev/null'
-```
+git clone https://github.com/juhellwig/4_TSI_DesBackEnd2.git
+cd projetodbe2
+cd applaravel
 
-#### Instalação e Configuração
-> **Nota para Windows:** Use a opção HTTPS "Windows Secure Channel library"
+### 2. Instalar Dependências do PHP
 
-<!-- ## 🗄️ Banco de Dados com Docker
+Utilize o Composer para instalar todas as bibliotecas e pacotes definidos no arquivo composer.json:
 
-### MySQL e phpMyAdmin
-* **phpmyAdminMysqlDockerCompose**: [Link](https://nodejs.org/en/download) -->
+```bash
+composer install
 
+### 3. Configurar o Banco de Dados
+
+Edite o arquivo .env e configure as credenciais de acesso ao seu banco de dados:
+
+```bash
+DB_CONNECTION=pgsql
+DB_HOST=localhost
+DB_PORT=5432
+DB_DATABASE=applaravel
+DB_USERNAME=postgres
+DB_PASSWORD=1234
+
+Se atente também as seguintes configurações:
+
+```bash
+APP_URL=http://localhost:8000
+APP_ADMIN_PASS = senhaDoAdm
+
+### 4. Executar Migrações e Seeders (Criação de Estrutura e Dados Iniciais)
+
+Este passo cria as tabelas definidas nas migrações e já insere alguns dados definidos e também aleatórios:
+
+```bash
+
+php artisan migrate -seed
+
+### 5. Em um terminal diferente, rode o servidor
+
+```bash
+composer run dev
 
 ---
 
-**Última atualização:** Agosto de 2025
+**Última atualização:** Dezembro de 2025
