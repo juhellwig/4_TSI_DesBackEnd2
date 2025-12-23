@@ -17,8 +17,8 @@ return new class extends Migration
                     ->constrained('users')
                     ->cascadeOnDelete();
             $table->foreignId('profissional_id')
-                    ->constrained('users')
                     ->nullable()
+                    ->constrained('users')
                     ->onDelete('set null');
             $table->date('dt_monitoramento');
             $table->time('hora_monitoramento');
