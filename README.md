@@ -101,8 +101,6 @@ Siga estes passos para configurar e colocar o projeto em funcionamento:
 
 ```bash
 git clone https://github.com/juhellwig/4_TSI_DesBackEnd2.git
-cd projetodbe2
-cd applaravel
 ```
 
 ### 2. Instalar Dependências do PHP
@@ -139,13 +137,7 @@ Este passo cria as tabelas definidas nas migrações e já insere alguns dados d
 
 ```bash
 
-php artisan migrate:fresh -seed
-```
-
-### 5. Em um terminal diferente, rode o servidor
-
-```bash
-composer run dev
+php artisan migrate:fresh --seed  --env=production
 ```
 
 ---
