@@ -96,8 +96,9 @@
                         <td>{{ ucfirst($usuario->tipo_usuario) }}</td>
                         <td>
                             @if ($usuario->imagem)
-                                <img src="{{ asset('imagens/' . $usuario->imagem) }}"
-                                     alt="Imagem de {{ $usuario->name }}">
+                                <img src="{{ $usuario->imagem }}"
+                                alt="Imagem de {{ $usuario->name }}">
+
                             @else
                                 <em>Sem imagem</em>
                             @endif
