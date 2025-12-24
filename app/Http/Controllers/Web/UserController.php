@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-
 use App\Models\User;
 
 class UserController{

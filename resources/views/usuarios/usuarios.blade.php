@@ -96,16 +96,10 @@
                         <td>{{ ucfirst($usuario->tipo_usuario) }}</td>
                         <td>
                             @if ($usuario->imagem)
-                                {{-- Verifica se é uma URL completa (Cloudinary) ou arquivo local --}}
-                                @php 
-                                    $url = str($usuario->imagem)->startsWith('http') 
-                                        ? $usuario->imagem 
-                                        : asset('imagens/' . $usuario->imagem);
-                                @endphp
-                                
-                                <img src="{{ $url }}" alt="Imagem de {{ $usuario->name }}" style="width: 80px; height: auto; border-radius: 4px;">
+                                <img src="{{ asset('imagens/' . $usuario->imagem) }}"
+                                     alt="Imagem de {{ $usuario->name }}">
                             @else
-                                <em style="color: #999;">Sem imagem</em>
+                                <em>Sem imagem</em>
                             @endif
                         </td>
                         <td>
