@@ -61,9 +61,7 @@ class UserUpdateRequest extends FormRequest
                 $isAdmin 
                     ? Rule::in(['administrador', 'paciente', 'profissional'])
                     : 'prohibited' // Proíbe alteração se não for Admin
-            ],
-            
-            // Regra de upload de imagem
+            ]
         ];
     }
 }
