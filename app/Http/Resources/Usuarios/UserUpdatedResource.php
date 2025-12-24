@@ -23,6 +23,7 @@ class UserUpdatedResource extends JsonResource
             'name' => $this->name,
             'telefone'=> $this->telefone,
             'imagem' => $this->imagem,
+            'cpf' => $this->cpf,
             'tipo_usuario' => $this->tipo_usuario,
             'email' => $this->email,
             'password' => $this->password,
