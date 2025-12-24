@@ -1,0 +1,34 @@
+{
+	"id": "c9aeae91-c049-426c-871a-a3b949d13b9a",
+	"name": "4_TSI_DesBackEnd2_Heroku_Cloudinary",
+	"values": [
+		{
+			"key": "URL_USUARIO",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "URL_BASE",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "URL_ENDERECO",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "URL_MONITORAMENTO",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-12-24T20:03:03.872Z",
+	"_postman_exported_using": "Postman/11.77.2"
+}
