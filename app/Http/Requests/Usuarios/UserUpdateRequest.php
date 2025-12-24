@@ -47,6 +47,12 @@ class UserUpdateRequest extends FormRequest
             'name' => 'sometimes|string|max:255',
             'email' => ['sometimes', 'email', Rule::unique('users', 'email')->ignore($id)],
             'password' => 'sometimes|string|min:6',
+
+            'cpf'      => ['sometimes', 'string', 'max:11', Rule::unique('users', 'cpf')->ignore($id)],
+            'sexo'     => 'sometimes|string|max:1',
+            'dtnasc'   => 'sometimes|date',
+            'telefone' => 'sometimes|string|max:15',
+            'imagem' => 'nullable|file|image|mimes:jpg,jpeg,png,gif|max:2048', 
             
             // Permite que apenas Admin altere o tipo de usuário
             'tipo_usuario' => [
@@ -58,7 +64,6 @@ class UserUpdateRequest extends FormRequest
             ],
             
             // Regra de upload de imagem
-            'imagem' => 'nullable|file|image|mimes:jpg,jpeg,png,gif|max:2048', 
         ];
     }
 }

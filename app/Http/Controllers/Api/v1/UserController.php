@@ -85,6 +85,8 @@ class UserController extends ApiController
                 // Salva no banco
                 $data['imagem'] = $upload->getSecurePath();
                 $data['public_id'] = $upload->getPublicId();
+            } else {
+                unset($data['imagem']);
             }
 
             if (isset($data['password'])) {
