@@ -12,15 +12,15 @@ class UserUploadService
 
     public static function handleUploadFile(UploadedFile $image): array
     {
-        $hashFilename = $image->hashName();
+        $filename = $image->hashName();
 
-        $result = Storage::putFile(self::$path, $image);
+        $result = Storage::putFileAs(self::$path, $image, $filename);
 
         if (!$result) {
             throw new Exception("Erro ao salvar imagem do usuário");
         }
 
-        $public_id = self::$path . '/' . $hashFilename;
+        $public_id = self::$path . '/' . $filename;
         $url = Storage::url($public_id);
 
         if (!$url) {
