@@ -67,7 +67,7 @@ class UserController extends ApiController
 
                 // Remove imagem antiga no Cloudinary
                 if ($user->public_id) {
-                    Storage::delete($user->public_id);
+                    UserUploadService::delete($user->public_id);
                 }
 
                 // Upload da nova imagem
@@ -103,7 +103,7 @@ class UserController extends ApiController
 
             // Apaga imagem do Cloudinary
             if ($user->public_id) {
-                Storage::delete($user->public_id);
+                UserUploadService::delete($user->public_id);
             }
 
             $user->delete();

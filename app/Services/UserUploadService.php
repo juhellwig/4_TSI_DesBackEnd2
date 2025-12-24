@@ -5,6 +5,7 @@ namespace App\Services;
 use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class UserUploadService
 {
@@ -31,5 +32,10 @@ class UserUploadService
             'url' => $url,
             'public_id' => $public_id
         ];
+    }
+
+    public static function delete(string $publicId): void
+    {
+        Cloudinary::destroy($publicId);
     }
 }
