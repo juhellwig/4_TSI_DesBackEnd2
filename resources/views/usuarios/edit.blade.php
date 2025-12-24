@@ -96,7 +96,7 @@
         <label for="imagem">Imagem</label>
         <input type="file" name="imagem" id="imagem">
         @if ($usuario->imagem)
-            <img src="{{ asset('imagens/' . $usuario->imagem) }}" alt="Imagem de {{ $usuario->name }}">
+            <img src="{{ $usuario->imagem }}" alt="Imagem de {{ $usuario->name }}">
         @endif
 
         <button type="submit">Salvar Alterações</button>
