@@ -1,5 +1,3 @@
-@use Illuminate\Support\Str;
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -98,13 +96,16 @@
                         <td>{{ ucfirst($usuario->tipo_usuario) }}</td>
                         <td>
                             @if ($usuario->imagem)
-                                @if (Str::startsWith($usuario->imagem, 'http'))
-                                    <img src="{{ $usuario->imagem }}" alt="Imagem de {{ $usuario->name }}" width="80">
-                                @else
-                                    <img src="{{ asset('imagens/' . $usuario->imagem) }}" alt="Imagem de {{ $usuario->name }}" width="80">
-                                @endif
+                                {{-- Verifica se é uma URL completa (Cloudinary) ou arquivo local --}}
+                                @php 
+                                    $url = str($usuario->imagem)->startsWith('http') 
+                                        ? $usuario->imagem 
+                                        : asset('imagens/' . $usuario->imagem);
+                                @endphp
+                                
+                                <img src="{{ $url }}" alt="Imagem de {{ $usuario->name }}" style="width: 80px; height: auto; border-radius: 4px;">
                             @else
-                                <em>Sem imagem</em>
+                                <em style="color: #999;">Sem imagem</em>
                             @endif
                         </td>
                         <td>
