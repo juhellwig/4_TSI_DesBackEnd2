@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
-            $table->timestamp('datacadastro');
-            $table->string('imagem');
+            $table->timestamp('datacadastro')->nullable();
+            $table->string('imagem')->nullable();
+            $table->string('public_id')->nullable(); // ID de controle do Cloudinary
             $table->timestamps();
         });
 

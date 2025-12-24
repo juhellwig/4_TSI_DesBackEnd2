@@ -58,7 +58,7 @@ class UserUpdateRequest extends FormRequest
             ],
             
             // Regra de upload de imagem
-            'imagem' => 'sometimes|file|image|mimes:jpg,jpeg,png,gif|max:2048', 
+            'imagem' => 'nullable|file|image|mimes:jpg,jpeg,png,gif|max:2048', 
         ];
     }
 }

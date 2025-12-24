@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +21,9 @@ class UserSpecificSeeder extends Seeder
             'password' => Hash::make('password'), 
             'cpf' => '55544433322',
             'datacadastro' => now(),
-            'imagem' => 'https://placehold.co/200x200/2962ff/ffffff?text=PRO'
+            //'imagem' => 'https://placehold.co/200x200/2962ff/ffffff?text=PRO'
+            'imagem' => null,
+            'public_id' => null,
         ]);
 
         //fixo
@@ -32,7 +33,9 @@ class UserSpecificSeeder extends Seeder
             'password' => Hash::make('password'), 
             'cpf' => '11122233344',
             'datacadastro' => now(),
-            'imagem' => 'https://placehold.co/200x200/ff6d00/ffffff?text=PAC'
+            //'imagem' => 'https://placehold.co/200x200/ff6d00/ffffff?text=PAC'
+            'imagem' => null,
+            'public_id' => null,
         ]);
         
         //dados aleatórios em massa

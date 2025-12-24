@@ -28,17 +28,17 @@ class UserStoreRequest extends FormRequest
             "cpf"           => "required|max:11|unique:users,cpf",
             "telefone"      => "nullable|max:15",
             "email"         => "required|email|unique:users,email",
-            "tipo_usuario"  => "required|string",
+            "tipo_usuario" => "required|in:paciente,profissional,administrador",
             "password"      => "required|min:5",
             "datacadastro"  => "nullable|date",
-            "imagem"        => "nullable|string"
+            "imagem"        => "nullable|file|image|mimes:jpg,jpeg,png|max:2048"
         ];
     }
 
     public function messages()
     {
         return [
-            'name.require' => 'O nome é obrigatório',
+            'name.required' => 'O nome é obrigatório',
             'name.max' => 'O nome deve ter no máximo 50 caracteres',
             'email.required' => 'O e-mail é obrigatório',
             'email.email' => 'Informe um e-mail válido',

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Web;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
 
 use App\Models\User;
 
@@ -19,15 +21,17 @@ class UserController{
     // Pega todos os dados do formulário
     $data = request()->all();
 
-    // Trata o upload da imagem, se houver
-    if(request()->hasFile('imagem')){
-        $arquivo = request()->file('imagem');
-        $nome = time().'_'.$arquivo->getClientOriginalName();
-        $arquivo->move(public_path('imagens'), $nome);
-        $data['imagem'] = $nome;
-    } else {
-        $data['imagem'] = '';
-    }
+    // Upload da imagem no Cloudinary
+        if (request()->hasFile('imagem')) {
+
+            $upload = Cloudinary::upload(
+                request()->file('imagem')->getRealPath(),
+                ['folder' => 'uploads/users']
+            );
+
+            $data['imagem'] = $upload->getSecurePath(); // URL
+            $data['public_id'] = $upload->getPublicId(); // ID
+        }
 
     // Salva no banco
     User::create($data);
@@ -47,14 +51,25 @@ class UserController{
         $usuario = User::find($id);
         $data = request()->all();
 
-        // Upload de imagem se houver
-        if(request()->hasFile('imagem')){
-            $arquivo = request()->file('imagem');
-            $nome = time().'_'.$arquivo->getClientOriginalName();
-            $arquivo->move(public_path('imagens'), $nome);
-            $data['imagem'] = $nome;
+        // Upload de nova imagem
+        if (request()->hasFile('imagem')) {
+
+            // Remove imagem antiga do Cloudinary
+            if (!empty($usuario->public_id)) {
+                Cloudinary::destroy($usuario->public_id);
+            }
+
+            $upload = Cloudinary::upload(
+                request()->file('imagem')->getRealPath(),
+                ['folder' => 'uploads/users']
+            );
+
+            $data['imagem'] = $upload->getSecurePath();
+            $data['public_id'] = $upload->getPublicId();
         } else {
-            $data['imagem'] = $usuario->imagem; // mantém a imagem antiga
+            // Mantém imagem antiga
+            $data['imagem'] = $usuario->imagem;
+            $data['public_id'] = $usuario->public_id;
         }
 
         $usuario->update($data);
@@ -66,6 +81,12 @@ class UserController{
     // Excluir usuário
     public function destroy($id){
         $usuario = User::find($id);
+
+        // Remove imagem do Cloudinary
+        if (!empty($usuario->public_id)) {
+            Cloudinary::destroy($usuario->public_id);
+        }
+        
         $usuario->delete();
 
         return redirect()->route('usuarios.lista')

@@ -26,7 +26,6 @@ class UserStoredResource extends JsonResource
             'tipo_usuario' => $this->tipo_usuario,
             'imagem' => $this->imagem,
             'email' => $this->email,
-            'password' => $this->password,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

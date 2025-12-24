@@ -28,7 +28,8 @@ class User extends Authenticatable
         'tipo_usuario', 
         'password', 
         'datacadastro', 
-        'imagem'
+        'imagem',
+        'public_id'
     ];
 
     /**

@@ -1,3 +1,5 @@
+@use Illuminate\Support\Str;
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -96,8 +98,11 @@
                         <td>{{ ucfirst($usuario->tipo_usuario) }}</td>
                         <td>
                             @if ($usuario->imagem)
-                                <img src="{{ asset('imagens/' . $usuario->imagem) }}"
-                                     alt="Imagem de {{ $usuario->name }}">
+                                @if (Str::startsWith($usuario->imagem, 'http'))
+                                    <img src="{{ $usuario->imagem }}" alt="Imagem de {{ $usuario->name }}" width="80">
+                                @else
+                                    <img src="{{ asset('imagens/' . $usuario->imagem) }}" alt="Imagem de {{ $usuario->name }}" width="80">
+                                @endif
                             @else
                                 <em>Sem imagem</em>
                             @endif

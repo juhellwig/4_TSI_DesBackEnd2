@@ -26,15 +26,15 @@ class UserFactory extends Factory
         $tipos = ['paciente', 'profissional', 'administrador'];
 
          // Gera uma URL de imagem aleatória (via.placeholder.com)
-        $imageUrl = fake()->imageUrl(200, 200, 'people', true, 'Faker Image');
+        //$imageUrl = fake()->imageUrl(200, 200, 'people', true, 'Faker Image');
 
         // Aplica a correção, substituindo a URL padrão do Faker (via.placeholder.com) 
         // pelo domínio funcional 'dummyimage.com', garantindo que as imagens aleatórias funcionem.
-        $safeImageUrl = str_replace(
-            'via.placeholder.com', 
-            'dummyimage.com', 
-            $imageUrl
-        );
+        // $safeImageUrl = str_replace(
+        //     'via.placeholder.com', 
+        //     'dummyimage.com', 
+        //     $imageUrl
+        // );
 
         return [
             'name' => fake()->name(),
@@ -46,7 +46,9 @@ class UserFactory extends Factory
             // O tipo padrão é aleatório. Isso é sobrescrito pelos estados abaixo.
             'tipo_usuario' => $this->faker->randomElement($tipos), 
             'datacadastro' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'imagem' => $safeImageUrl,
+            
+            'imagem' => null,
+            'public_id' => null,
             
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
