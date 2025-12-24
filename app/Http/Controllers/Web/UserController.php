@@ -1,94 +1,94 @@
 <?php
 
 namespace App\Http\Controllers\Web;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\UserUploadService;
+use Illuminate\Support\Facades\Storage;
 
 class UserController{
-    public function listarUsuarios(){
+    public function listarUsuarios()
+    {
         $listUsuarios = User::all();
-        return view('usuarios/usuarios', compact('listUsuarios'));
+        return view('usuarios.usuarios', compact('listUsuarios'));
     }
 
     // Exibir formulário de criação
-    public function create(){
+    public function create()
+    {
         return view('usuarios.create');
     }
 
-    public function store(){
-    // Pega todos os dados do formulário
-    $data = request()->all();
+    // Salvar usuário
+    public function store()
+    {
+        $data = request()->all();
 
-    // Upload da imagem no Cloudinary
         if (request()->hasFile('imagem')) {
-
-            $upload = Cloudinary::upload(
-                request()->file('imagem')->getRealPath(),
-                ['folder' => 'uploads/users']
+            $upload = UserUploadService::handleUploadFile(
+                request()->file('imagem')
             );
 
-            $data['imagem'] = $upload->getSecurePath(); // URL
-            $data['public_id'] = $upload->getPublicId(); // ID
+            $data['imagem'] = $upload['url'];
+            $data['public_id'] = $upload['public_id'];
         }
 
-    // Salva no banco
-    User::create($data);
+        User::create($data);
 
-    return redirect()->route('usuarios.lista')
-                     ->with('success', 'Usuário cadastrado com sucesso!');
+        return redirect()
+            ->route('usuarios.lista')
+            ->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     // Exibir formulário de edição
-    public function edit($id){
-        $usuario = User::find($id);
+    public function edit($id)
+    {
+        $usuario = User::findOrFail($id);
         return view('usuarios.edit', compact('usuario'));
     }
 
     // Atualizar usuário
-    public function update($id){
-        $usuario = User::find($id);
+    public function update($id)
+    {
+        $usuario = User::findOrFail($id);
         $data = request()->all();
 
-        // Upload de nova imagem
         if (request()->hasFile('imagem')) {
 
-            // Remove imagem antiga do Cloudinary
-            if (!empty($usuario->public_id)) {
-                Cloudinary::destroy($usuario->public_id);
+            // remove imagem antiga
+            if ($usuario->public_id) {
+                Storage::delete($usuario->public_id);
             }
 
-            $upload = Cloudinary::upload(
-                request()->file('imagem')->getRealPath(),
-                ['folder' => 'uploads/users']
+            $upload = UserUploadService::handleUploadFile(
+                request()->file('imagem')
             );
 
-            $data['imagem'] = $upload->getSecurePath();
-            $data['public_id'] = $upload->getPublicId();
-        } else {
-            // Mantém imagem antiga
-            $data['imagem'] = $usuario->imagem;
-            $data['public_id'] = $usuario->public_id;
+            $data['imagem'] = $upload['url'];
+            $data['public_id'] = $upload['public_id'];
         }
 
         $usuario->update($data);
 
-        return redirect()->route('usuarios.lista')
-                        ->with('success', 'Usuário atualizado com sucesso!');
+        return redirect()
+            ->route('usuarios.lista')
+            ->with('success', 'Usuário atualizado com sucesso!');
     }
 
     // Excluir usuário
-    public function destroy($id){
-        $usuario = User::find($id);
+    public function destroy($id)
+    {
+        $usuario = User::findOrFail($id);
 
-        // Remove imagem do Cloudinary
-        if (!empty($usuario->public_id)) {
-            Cloudinary::destroy($usuario->public_id);
+        if ($usuario->public_id) {
+            Storage::delete($usuario->public_id);
         }
-        
+
         $usuario->delete();
 
-        return redirect()->route('usuarios.lista')
-                        ->with('success', 'Usuário excluído com sucesso!');
+        return redirect()
+            ->route('usuarios.lista')
+            ->with('success', 'Usuário excluído com sucesso!');
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Resources\Usuarios;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 
 class UserUpdatedResource extends JsonResource

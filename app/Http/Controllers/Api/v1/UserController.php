@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Models\User;
+use App\Services\UserUploadService;
 use App\Http\Requests\Usuarios\UserStoreRequest;
 use App\Http\Requests\Usuarios\UserUpdateRequest;
 use App\Http\Resources\Usuarios\UserStoredResource;
@@ -12,7 +13,7 @@ use App\Http\Resources\UserCollection;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends ApiController
 {
@@ -21,32 +22,27 @@ class UserController extends ApiController
         return new UserCollection(User::all());
     }
 
-    public function store(UserStoreRequest $request)
-    {
+    public function store(UserStoreRequest $request){
         try{
             $data = $request->validated();
 
             // Upload da imagem (se enviada)
-        if ($request->hasFile('imagem')) {
+            if ($request->hasFile('imagem')) {
+                $upload = UserUploadService::handleUploadFile(
+                    $request->file('imagem')
+                );
 
-            $upload = Cloudinary::upload(
-                $request->file('imagem')->getRealPath(),
-                [
-                    'folder' => 'uploads/users'
-                ]
-            );
-
-            $data['imagem'] = $upload->getSecurePath(); // URL
-            $data['public_id'] = $upload->getPublicId();
-        }
-
-            if (isset($data['password'])) {
-                $data['password'] = Hash::make($data['password']);
+                $data['imagem'] = $upload['url'];
+                $data['public_id'] = $upload['public_id'];
             }
 
-            $data['datacadastro'] = $data['datacadastro'] ?? now();
+                if (isset($data['password'])) {
+                    $data['password'] = Hash::make($data['password']);
+                }
 
-            return new UserStoredResource(User::create($data));
+                $data['datacadastro'] = $data['datacadastro'] ?? now();
+
+                return new UserStoredResource(User::create($data));
         } catch (Exception $error){
             return $this->errorHandler("Erro ao criar novo usuario!", $error, 500);
         }
@@ -54,7 +50,7 @@ class UserController extends ApiController
 
     public function show(Request $request, User $user)
     {
-        $usuarioLogado = $request->user();
+        //$usuarioLogado = $request->user();
         
         // if ($usuarioLogado->id !== $user->id && !$usuarioLogado->tokenCan('is-admin')) {
         //      return response()->json(['message' => 'Você não tem permissão para visualizar este perfil.'], 403);
@@ -70,23 +66,18 @@ class UserController extends ApiController
             if ($request->hasFile('imagem')) {
 
                 // Remove imagem antiga no Cloudinary
-                if (!empty($user->public_id)) {
-                    Cloudinary::destroy($user->public_id);
+                if ($user->public_id) {
+                    Storage::delete($user->public_id);
                 }
 
                 // Upload da nova imagem
-                $upload = Cloudinary::upload(
-                    $request->file('imagem')->getRealPath(),
-                    [
-                        'folder' => 'uploads/users'
-                    ]
+                $upload = UserUploadService::handleUploadFile(
+                    $request->file('imagem')
                 );
 
                 // Salva no banco
-                $data['imagem'] = $upload->getSecurePath();
-                $data['public_id'] = $upload->getPublicId();
-            } else {
-                unset($data['imagem']);
+                $data['imagem'] = $upload['url'];
+                $data['public_id'] = $upload['public_id'];
             }
 
             if (isset($data['password'])) {
@@ -111,9 +102,9 @@ class UserController extends ApiController
             }
 
             // Apaga imagem do Cloudinary
-            if (!empty($user->public_id)) {
-                    Cloudinary::destroy($user->public_id);
-                }
+            if ($user->public_id) {
+                Storage::delete($user->public_id);
+            }
 
             $user->delete();
 
