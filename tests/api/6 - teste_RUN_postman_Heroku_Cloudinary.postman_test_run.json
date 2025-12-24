@@ -1,0 +1,580 @@
+{
+	"id": "1592bfeb-7bdd-497f-9cf5-bb5b0ffd9768",
+	"name": "4_TSI_DesBackEnd2_Heroku_Cloudinary",
+	"timestamp": "2025-12-23T20:59:44.388Z",
+	"collection_id": "38128753-0004d635-2e0c-4ff9-9ead-d0a8ce68fe1a",
+	"folder_id": 0,
+	"environment_id": "38128753-c9aeae91-c049-426c-871a-a3b949d13b9a",
+	"totalPass": 17,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-12-23T20:59:38.299Z",
+	"totalFail": 1,
+	"results": [
+		{
+			"id": "ee28f9d1-2788-4627-a1f5-8ecf39eb5888",
+			"name": "LOGIN",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/tokens/login",
+			"time": 867,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				867
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "51e5fd0e-d72c-4df8-a48d-9336a5ebed9d",
+			"name": "GET Usuario",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/users",
+			"time": 169,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				169
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "87cec281-7ecf-4841-92ee-d6aebfe94031",
+			"name": "GET Usuario por ID",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/users/3",
+			"time": 167,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				167
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b6c34a99-3928-4142-b969-e266598424f4",
+			"name": "POST Usuario",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/users",
+			"time": 405,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				405
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "91af68ae-df83-4f10-b300-ef82f28c07a9",
+			"name": "PUT Usuario",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/users/8",
+			"time": 165,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				165
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2d9aed7f-9958-4a66-b061-5b886cb8281a",
+			"name": "DELETE Usuario",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/users/15",
+			"time": 173,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				173
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4d33004c-6b6f-4bba-ac0d-409426f048e6",
+			"name": "GET Enderecos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/enderecos",
+			"time": 171,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				171
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "bf879873-0494-47bf-8b78-0f2523c57d49",
+			"name": "GET Enderecos por ID",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/enderecos/5",
+			"time": 161,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				161
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d7f59907-5c6e-4a4b-8a74-9fe80bc6409a",
+			"name": "POST Enderecos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/enderecos",
+			"time": 174,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				174
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "4d5f28fe-430a-418f-b656-c8c8b59bb00f",
+			"name": "PUT Enderecos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/enderecos/6",
+			"time": 172,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				172
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f7119938-4505-4c91-b966-bb4d27c692e2",
+			"name": "DELETE Enderecos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/enderecos/2",
+			"time": 171,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				171
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "bbaf501c-3aca-40e7-9d57-22a3e42ebf21",
+			"name": "GET Monitoramentos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/monitoramentos",
+			"time": 173,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				173
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "78674010-ffe8-4e81-8868-dec493899a8a",
+			"name": "GET Monitoramentos por ID",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/monitoramentos/1",
+			"time": 162,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				162
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8ed549dd-60ed-4f48-ae33-fb0d986247a1",
+			"name": "POST Monitoramentos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/monitoramentos",
+			"time": 177,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				177
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "573f91bc-ef7c-4530-ac04-4fa790b54197",
+			"name": "PUT Monitoramentos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/monitoramentos/1",
+			"time": 172,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				172
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a9f77eb5-8c3d-4a28-a1e8-7122969296c4",
+			"name": "DELETE Monitoramentos",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/monitoramentos/3",
+			"time": 177,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				177
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "41fc346a-7fe6-4868-a1bf-34ccaefdaf84",
+			"name": "LOGOUT Padrão",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/tokens/logout",
+			"time": 170,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Logout realizado com sucesso": true
+			},
+			"testPassFailCounts": {
+				"Logout realizado com sucesso": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				170
+			],
+			"allTests": [
+				{
+					"Logout realizado com sucesso": true
+				}
+			]
+		},
+		{
+			"id": "4cdbafef-02fa-4aab-a37c-e8a02035d160",
+			"name": "LOGOUT Revoke_all",
+			"url": "https://des-back-end2-laravel-915282cf5a09.herokuapp.com/api/v1/tokens/api/v1/tokens/logout",
+			"time": 169,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Logout realizado com sucesso": false
+			},
+			"testPassFailCounts": {
+				"Logout realizado com sucesso": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				169
+			],
+			"allTests": [
+				{
+					"Logout realizado com sucesso": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3995,
+	"collection": {
+		"requests": [
+			{
+				"id": "ee28f9d1-2788-4627-a1f5-8ecf39eb5888",
+				"method": "POST"
+			},
+			{
+				"id": "51e5fd0e-d72c-4df8-a48d-9336a5ebed9d",
+				"method": "GET"
+			},
+			{
+				"id": "87cec281-7ecf-4841-92ee-d6aebfe94031",
+				"method": "GET"
+			},
+			{
+				"id": "b6c34a99-3928-4142-b969-e266598424f4",
+				"method": "POST"
+			},
+			{
+				"id": "91af68ae-df83-4f10-b300-ef82f28c07a9",
+				"method": "POST"
+			},
+			{
+				"id": "2d9aed7f-9958-4a66-b061-5b886cb8281a",
+				"method": "DELETE"
+			},
+			{
+				"id": "4d33004c-6b6f-4bba-ac0d-409426f048e6",
+				"method": "GET"
+			},
+			{
+				"id": "bf879873-0494-47bf-8b78-0f2523c57d49",
+				"method": "GET"
+			},
+			{
+				"id": "d7f59907-5c6e-4a4b-8a74-9fe80bc6409a",
+				"method": "POST"
+			},
+			{
+				"id": "4d5f28fe-430a-418f-b656-c8c8b59bb00f",
+				"method": "PUT"
+			},
+			{
+				"id": "f7119938-4505-4c91-b966-bb4d27c692e2",
+				"method": "DELETE"
+			},
+			{
+				"id": "bbaf501c-3aca-40e7-9d57-22a3e42ebf21",
+				"method": "GET"
+			},
+			{
+				"id": "78674010-ffe8-4e81-8868-dec493899a8a",
+				"method": "GET"
+			},
+			{
+				"id": "8ed549dd-60ed-4f48-ae33-fb0d986247a1",
+				"method": "POST"
+			},
+			{
+				"id": "573f91bc-ef7c-4530-ac04-4fa790b54197",
+				"method": "PUT"
+			},
+			{
+				"id": "a9f77eb5-8c3d-4a28-a1e8-7122969296c4",
+				"method": "DELETE"
+			},
+			{
+				"id": "41fc346a-7fe6-4868-a1bf-34ccaefdaf84",
+				"method": "POST"
+			},
+			{
+				"id": "4cdbafef-02fa-4aab-a37c-e8a02035d160",
+				"method": "POST"
+			}
+		]
+	}
+}
