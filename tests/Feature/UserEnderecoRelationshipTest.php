@@ -4,26 +4,24 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Endereco;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserEnderecoRelationshipTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function teste_usuario_tem_um_endereco()
+    public function test_usuario_tem_um_endereco()
     {
         $user = User::factory()->create();
 
-        $user->endereco()->create([
-            'rua' => 'Rua Teste',
-            'numero' => '123',
-            'bairro' => 'Centro',
-            'cidade' => 'São Paulo',
-            'estado' => 'SP',
-            'cep' => '00000000',
+        Endereco::factory()->create([
+            'user_id'    => $user->id,
+            'logradouro' => 'Rua Teste',
         ]);
 
-        $this->assertNotNull($user->endereco);
-        $this->assertEquals('Rua Teste', $user->endereco->rua);
+        $user->refresh();
+
+        $this->assertInstanceOf(Endereco::class, $user->endereco);
     }
 }

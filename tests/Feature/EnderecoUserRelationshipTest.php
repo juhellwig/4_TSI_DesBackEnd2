@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\Endereco;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\User;
 
 class EnderecoUserRelationshipTest extends TestCase
 {
@@ -12,8 +13,12 @@ class EnderecoUserRelationshipTest extends TestCase
 
     public function teste_endereco_pertence_usuario()
     {
-        $endereco = Endereco::factory()->create();
+        $user = User::factory()->create();
 
-        $this->assertNotNull($endereco->user);
+    $endereco = Endereco::factory()->create([
+        'user_id' => $user->id,
+    ]);
+
+    $this->assertInstanceOf(User::class, $endereco->user);
     }
 }

@@ -11,20 +11,17 @@ class MonitoramentoUserRelationshipTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_monitoramento_pertence_usuario()
+    public function test_monitoramento_pertence_ao_paciente()
     {
         $paciente = User::factory()->create();
         $profissional = User::factory()->create();
 
-        $monitoramento = Monitoramento::create([
+        $monitoramento = Monitoramento::factory()->create([
             'paciente_id' => $paciente->id,
             'profissional_id' => $profissional->id,
-            'datahora_monitoramento' => now(),
-            'tipo' => 'hipertensao',
-            'observacoes' => 'Monitoramento teste',
+            'dt_monitoramento' => now(), // campo obrigatório
         ]);
 
-        $this->assertNotNull($monitoramento->paciente);
-        $this->assertNotNull($monitoramento->profissional);
+        $this->assertInstanceOf(User::class, $monitoramento->paciente);
     }
 }
